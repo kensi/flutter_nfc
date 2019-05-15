@@ -2,8 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:nfc/ndef_tag.dart';
-import 'package:nfc/nfc.dart';
+import 'package:flutter_nfc/ndef_tag.dart';
+import 'package:flutter_nfc/nfc.dart';
+
 
 void main() => runApp(MyApp());
 

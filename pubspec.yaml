@@ -1,8 +1,8 @@
 name: flutter_nfc
 description: Plugin for reading ndef nfc tags
 version: 0.0.1
-author:
-homepage:
+author: Kenny Stridh <kenny.stridh@gmail.com>
+homepage: https://github.com/kensi/flutter_nfc
 
 environment:
   sdk: ">=2.1.0 <3.0.0"

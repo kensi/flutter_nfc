@@ -1,9 +1,10 @@
 import 'package:flutter/services.dart';
+import 'package:flutter_nfc/nfc.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:nfc/nfc.dart';
+
 
 void main() {
-  const MethodChannel channel = MethodChannel('nfc');
+  const MethodChannel channel = MethodChannel('neonchipmunk.com/nfc');
 
   setUp(() {
     channel.setMockMethodCallHandler((MethodCall methodCall) async {
@@ -15,7 +16,7 @@ void main() {
     channel.setMockMethodCallHandler(null);
   });
 
-  test('getPlatformVersion', () async {
+  test('readSingleTag', () async {
     expect(await Nfc.readSingleTag, '42');
   });
 }
