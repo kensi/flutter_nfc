@@ -36,6 +36,12 @@ class _MyAppState extends State<MyApp> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    _init();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
@@ -90,5 +96,9 @@ class _MyAppState extends State<MyApp> {
       return "${record.qualifiedName} ${record.qualifiedType} ${record.data}";
     }
     return "";
+  }
+
+  void _init() async {
+    await Nfc.startReading();
   }
 }
