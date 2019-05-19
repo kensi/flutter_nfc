@@ -35,7 +35,7 @@ class NfcPlugin private constructor(registrar: Registrar, private val activity: 
 
     override fun onMethodCall(call: MethodCall, result: Result) {
         when (call.method) {
-            "readSingleTag" -> {
+            "readTag" -> {
                 if (currentMethodCallResult != null) {
                     result.error("001", "Already processing", null)
                     return
@@ -68,12 +68,11 @@ class NfcPlugin private constructor(registrar: Registrar, private val activity: 
         try {
             ndef.connect()
             val message = ndef.ndefMessage ?: return
-            val id = tag?.id?.joinToString(separator = "") { String.format("%02X", it) } ?: ""
-            val result = NdefTag(id, message.records.map {
-                NdefRecord(it.toMimeType() ?: "", it.payload.toString())
+            val result = NdefTag(tag?.id, message.records.map {
+                NdefRecord(it.tnf , it.type, it.id, it.payload)
             }.toList())
             ndef.close()
-            println(result.toString() + " " + result.records.size)
+            println(result);
             currentMethodCallResult?.success(result.toJson())
 
         } catch (e : IOException) {

@@ -17,6 +17,6 @@ void main() {
   });
 
   test('readSingleTag', () async {
-    expect(await Nfc.readSingleTag, '42');
+    expect(await Nfc.readTag(), '42');
   });
 }
